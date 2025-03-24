@@ -37,5 +37,3 @@ END$$
 DELIMITER ;
 
 SELECT calcular_bonificacion(SELECT salario FROM empleados WHERE id=1;);
-
-SELECT salario FROM empleados WHERE id=1;

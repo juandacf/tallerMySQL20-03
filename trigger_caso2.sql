@@ -18,7 +18,11 @@ FOREIGN KEY (id_empleado) REFERENCES empleados(id)
 );
 
 DELIMITER $$
-
-
-
+CREATE TRIGGER before_salario_update
+BEFORE UPDATE ON empleados
+FOR EACH ROW
+BEGIN
+INSERT INTO historial_salarios (id_empleado, salario_anterior, salario_nuevo)
+VALUES (OLD.id, OLD.salario, NEW.salario);
+END $$
 DELIMITER ;
